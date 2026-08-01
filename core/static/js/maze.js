@@ -474,16 +474,33 @@ class MazeVisualizer {
             if (e.target.id === 'help-modal') e.target.classList.remove('active');
         });
 
-        // DFID History modal
-        document.getElementById('dfid-history-btn')?.addEventListener('click', () => {
-            this.showHistoryModal();
+        // Mobile playback controls
+        document.getElementById('mobile-start-btn')?.addEventListener('click', () => {
+            if (!this.isVisualizing)      this.startVisualization();
+            else if (this.isPaused)       this.resumeVisualization();
+            else                          this.pauseVisualization();
         });
-        document.getElementById('close-history')?.addEventListener('click', () =>
-            document.getElementById('history-modal').classList.remove('active'));
-        document.getElementById('history-modal')?.addEventListener('click', (e) => {
-            if (e.target.id === 'history-modal') e.target.classList.remove('active');
+        document.getElementById('mobile-pause-btn')?.addEventListener('click', () => this.pauseVisualization());
+        document.getElementById('mobile-reset-btn')?.addEventListener('click', () => this.resetVisualization());
+
+        // Mobile settings scroll toggle
+        document.getElementById('mobile-controls-toggle')?.addEventListener('click', () => {
+            const sidebar = document.querySelector('.sidebar');
+            if (sidebar) {
+                sidebar.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+
+        // Window resize / orientation change handling for responsive grid
+        window.addEventListener('resize', () => {
+            clearTimeout(this._resizeTimer);
+            this._resizeTimer = setTimeout(() => {
+                this.generateMaze();
+                this.resetVisualization();
+            }, 200);
         });
     }
+
 
     // ─── PANEL TABS ───────────────────────────────────────
 
@@ -515,17 +532,23 @@ class MazeVisualizer {
         this.start = { x: 0, y: 0 };
 
         const wrapper = this.mazeGrid.parentElement;
-        // Force a layout flush so we get the real dimensions
-        const availW = Math.max((wrapper?.offsetWidth  || 600) - 16, 100);
-        const availH = Math.max((wrapper?.offsetHeight || 500) - 16, 100);
+        const isMobile = window.innerWidth <= 900;
         
-        // Calculate cell size, but enforce a minimum size (e.g. 25px) so when zoomed in it scrolls
-        const calculatedSize = Math.min(
-            Math.floor(availW  / this.gridSize),
-            Math.floor(availH  / this.gridSize),
-            80   // max cell size so large grids still look reasonable
-        );
-        const cellSize = Math.max(calculatedSize, 25);
+        // Calculate precise available width & height for clean screen fitting
+        const screenMargin = isMobile ? 16 : 32;
+        const maxAvailW = Math.max(Math.min(wrapper?.clientWidth || window.innerWidth, window.innerWidth - screenMargin), 100);
+        const maxAvailH = isMobile ? Math.floor(window.innerHeight * 0.45) : Math.max((wrapper?.clientHeight || 500) - 20, 200);
+
+        const calcCellW = Math.floor(maxAvailW / this.gridSize);
+        const calcCellH = Math.floor(maxAvailH / this.gridSize);
+
+        let cellSize;
+        if (isMobile) {
+            // Fit 100% cleanly inside mobile screen width
+            cellSize = Math.max(Math.min(calcCellW, calcCellH, 50), 10);
+        } else {
+            cellSize = Math.max(Math.min(calcCellW, calcCellH, 80), 20);
+        }
 
         this.mazeGrid.style.gridTemplateColumns = `repeat(${this.gridSize}, ${cellSize}px)`;
         this.mazeGrid.style.gridTemplateRows    = `repeat(${this.gridSize}, ${cellSize}px)`;
@@ -545,12 +568,13 @@ class MazeVisualizer {
                 el.className = 'grid-cell';
                 el.dataset.x = x; el.dataset.y = y;
 
-                if (cellSize >= 20) {
+                if (cellSize >= 22) {
                     const num = document.createElement('div');
                     num.className = 'cell-number';
                     num.textContent = `${x},${y}`;
                     el.appendChild(num);
                 }
+
 
                 el.addEventListener('click', () => this.handleCellClick(x, y));
                 el.addEventListener('mouseenter', (e) => { if (e.buttons === 1) this.handleCellClick(x, y, true); });
@@ -799,17 +823,31 @@ class MazeVisualizer {
         const startBtn = document.getElementById('start-btn');
         const pauseBtn = document.getElementById('pause-btn');
         const stepBtn  = document.getElementById('step-btn');
+
+        const mStartBtn = document.getElementById('mobile-start-btn');
+        const mPauseBtn = document.getElementById('mobile-pause-btn');
+
         if (!this.isVisualizing) {
-            startBtn.innerHTML = '<i class="fas fa-play"></i><span>Start Visualization</span>';
-            pauseBtn.disabled = true; stepBtn.disabled = true;
+            if (startBtn) startBtn.innerHTML = '<i class="fas fa-play"></i><span>Start Visualization</span>';
+            if (mStartBtn) mStartBtn.innerHTML = '<i class="fas fa-play"></i><span>Start</span>';
+            if (pauseBtn) pauseBtn.disabled = true;
+            if (mPauseBtn) mPauseBtn.disabled = true;
+            if (stepBtn) stepBtn.disabled = true;
         } else if (this.isPaused) {
-            startBtn.innerHTML = '<i class="fas fa-play"></i><span>Resume</span>';
-            pauseBtn.disabled = true; stepBtn.disabled = false;
+            if (startBtn) startBtn.innerHTML = '<i class="fas fa-play"></i><span>Resume</span>';
+            if (mStartBtn) mStartBtn.innerHTML = '<i class="fas fa-play"></i><span>Resume</span>';
+            if (pauseBtn) pauseBtn.disabled = true;
+            if (mPauseBtn) mPauseBtn.disabled = true;
+            if (stepBtn) stepBtn.disabled = false;
         } else {
-            startBtn.innerHTML = '<i class="fas fa-pause"></i><span>Pause</span>';
-            pauseBtn.disabled = false; stepBtn.disabled = true;
+            if (startBtn) startBtn.innerHTML = '<i class="fas fa-pause"></i><span>Pause</span>';
+            if (mStartBtn) mStartBtn.innerHTML = '<i class="fas fa-pause"></i><span>Pause</span>';
+            if (pauseBtn) pauseBtn.disabled = false;
+            if (mPauseBtn) mPauseBtn.disabled = false;
+            if (stepBtn) stepBtn.disabled = true;
         }
     }
+
 
     updateStatus(status) {
         const pill = document.getElementById('status-indicator');
