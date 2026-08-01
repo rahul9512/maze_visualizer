@@ -75,15 +75,32 @@ html, body {
     backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border);
     display: flex; align-items: center; justify-content: space-between;
-    padding: 0 14px; z-index: 1000; gap: 12px; width: 100%;
-}
-.topbar-left { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
-.topbar-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; margin-left: auto; }
-.topbar-center {
-    flex: 1; display: flex; align-items: center; justify-content: center; gap: 10px;
-    overflow-x: auto; overflow-y: visible; padding: 4px 6px;
+    padding: 0 14px; z-index: 1000; gap: 16px; width: 100%; max-width: 100vw;
+    overflow-x: auto; overflow-y: visible;
+    white-space: nowrap; flex-wrap: nowrap;
     scrollbar-width: thin; scrollbar-color: #00ff88 transparent;
 }
+
+.topbar::-webkit-scrollbar {
+    height: 6px;
+    display: block;
+}
+.topbar::-webkit-scrollbar-track {
+    background: rgba(5, 8, 18, 0.95);
+}
+.topbar::-webkit-scrollbar-thumb {
+    background: #00ff88;
+    border-radius: 99px;
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+}
+
+.topbar-left { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.topbar-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.topbar-center {
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+    flex-shrink: 0; margin: 0 auto; overflow: visible;
+}
+
 
 /* Brand */
 .brand { display: flex; align-items: center; gap: 8px; text-decoration: none; }
@@ -478,19 +495,6 @@ body {
     overflow-y: auto;
 }
 
-.topbar-center::-webkit-scrollbar {
-    height: 6px;
-}
-.topbar-center::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.4);
-    border-radius: 99px;
-}
-.topbar-center::-webkit-scrollbar-thumb {
-    background: #00ff88;
-    border-radius: 99px;
-    box-shadow: 0 0 8px rgba(0, 255, 136, 0.5);
-}
-
 .app-layout {
     display: grid;
     grid-template-columns: 320px 1fr;
@@ -521,13 +525,14 @@ body {
 
 @media (max-width: 900px) {
     .topbar {
-        padding: 0 8px;
-        gap: 6px;
+        padding: 0 10px;
+        gap: 12px;
+        overflow-x: auto;
+        overflow-y: visible;
+        justify-content: flex-start;
     }
 
     .topbar-center {
-        justify-content: flex-start;
-        overflow-x: auto;
-        padding-bottom: 4px;
+        margin: 0;
     }
 }
