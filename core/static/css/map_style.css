@@ -63,9 +63,10 @@ html, body {
     height: 100vh; font-family: var(--ui); background: var(--bg-deep); color: var(--text); overflow: hidden; margin: 0; padding: 0; 
 }
 
-::-webkit-scrollbar { width: 4px; height: 4px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--border-hi); border-radius: 99px; }
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: rgba(10, 15, 26, 0.8); }
+::-webkit-scrollbar-thumb { background: linear-gradient(135deg, rgba(0, 255, 136, 0.6), rgba(0, 212, 255, 0.8)); border-radius: 6px; border: 1px solid rgba(0, 255, 136, 0.4); }
+::-webkit-scrollbar-thumb:hover { background: #00ff88; box-shadow: 0 0 10px rgba(0, 255, 136, 0.8); }
 
 /* ── TOPBAR ─────────────────────────────────────────── */
 .topbar {
@@ -76,10 +77,31 @@ html, body {
     border-bottom: 1px solid var(--border);
     display: flex; align-items: center;
     padding: 0 14px; z-index: 1000; gap: 12px;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    white-space: nowrap !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: auto !important;
+    scrollbar-color: #00ff88 rgba(10, 15, 26, 0.9) !important;
 }
-.topbar-left, .topbar-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
-.topbar-right { margin-left: auto; }
-.topbar-center { flex: 1; display: flex; align-items: center; gap: 10px; justify-content: center; }
+
+.topbar::-webkit-scrollbar {
+    height: 6px !important;
+}
+
+.topbar::-webkit-scrollbar-track {
+    background: rgba(10, 15, 26, 0.9) !important;
+}
+
+.topbar::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #00ff88, #00d4ff) !important;
+    border-radius: 4px !important;
+}
+
+.topbar-left, .topbar-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0 !important; }
+.topbar-right { margin-left: auto; flex-shrink: 0 !important; }
+.topbar-center { flex-shrink: 0 !important; display: flex; align-items: center; gap: 10px; justify-content: center; }
+
 
 /* Brand */
 .brand { display: flex; align-items: center; gap: 8px; text-decoration: none; }
