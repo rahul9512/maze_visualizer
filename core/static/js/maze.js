@@ -535,20 +535,21 @@ class MazeVisualizer {
         const isMobile = window.innerWidth <= 900;
         
         // Calculate precise available width & height for clean screen fitting
-        const screenMargin = isMobile ? 16 : 32;
+        const screenMargin = isMobile ? 12 : 32;
         const maxAvailW = Math.max(Math.min(wrapper?.clientWidth || window.innerWidth, window.innerWidth - screenMargin), 100);
-        const maxAvailH = isMobile ? Math.floor(window.innerHeight * 0.45) : Math.max((wrapper?.clientHeight || 500) - 20, 200);
+        const maxAvailH = isMobile ? Math.floor(window.innerHeight * 0.55) : Math.max((wrapper?.clientHeight || 500) - 20, 200);
 
         const calcCellW = Math.floor(maxAvailW / this.gridSize);
         const calcCellH = Math.floor(maxAvailH / this.gridSize);
 
         let cellSize;
         if (isMobile) {
-            // Fit 100% cleanly inside mobile screen width
-            cellSize = Math.max(Math.min(calcCellW, calcCellH, 50), 10);
+            // Zoomed up cell size specifically for mobile devices
+            cellSize = Math.max(Math.min(calcCellW, 55), 22);
         } else {
             cellSize = Math.max(Math.min(calcCellW, calcCellH, 80), 20);
         }
+
 
         this.mazeGrid.style.gridTemplateColumns = `repeat(${this.gridSize}, ${cellSize}px)`;
         this.mazeGrid.style.gridTemplateRows    = `repeat(${this.gridSize}, ${cellSize}px)`;
