@@ -203,14 +203,15 @@ html, body {
 
 /* ── SIDEBAR ─────────────────────────────────────────── */
 .sidebar {
-    width: var(--sidebar-w); flex-shrink: 0; min-height: 0;
-    background: var(--bg-sidebar); border-right: 1px solid var(--border);
+    width: 320px; flex-shrink: 0;
+    background: transparent;
     display: flex; flex-direction: column; overflow-y: auto; overflow-x: hidden;
 }
 .sidebar-scroll {
-    flex: 1; padding: 10px;
-    display: flex; flex-direction: column; gap: 8px; min-height: min-content;
+    flex: 1; padding: 0;
+    display: flex; flex-direction: column; gap: 12px;
 }
+
 
 /* ── CARD ────────────────────────────────────────────── */
 .card {
@@ -305,18 +306,17 @@ html, body {
 /* ── MAIN AREA ───────────────────────────────────────── */
 .main-area {
     flex: 1; display: flex; flex-direction: column;
-    overflow: hidden; padding: 0 12px 0 0; gap: 10px; min-width: 0;
+    overflow: hidden; padding: 0; gap: 12px; min-width: 0;
 }
-
 
 /* Stats row */
 .stats-row {
-    display: flex; align-items: center; gap: 6px; flex-shrink: 0;
+    display: flex; align-items: center; gap: 8px; flex-shrink: 0;
 }
 .stat-chip {
     display: flex; align-items: center; gap: 6px;
     background: var(--bg-card); border: 1px solid var(--border);
-    border-radius: var(--r-md); padding: 4px 9px;
+    border-radius: var(--r-md); padding: 5px 11px;
 }
 .stat-chip > i { color: var(--cyan); font-size: 0.78rem; }
 .sc-val { font-family: var(--mono); font-size: 0.86rem; font-weight: 700; color: var(--cyan); line-height: 1; }
@@ -324,7 +324,7 @@ html, body {
 .coords-display {
     margin-left: auto; display: flex; gap: 10px; font-size: 0.7rem;
     background: var(--bg-card); border: 1px solid var(--border);
-    border-radius: var(--r-md); padding: 4px 10px;
+    border-radius: var(--r-md); padding: 5px 12px;
 }
 .coord-chunk { display: flex; align-items: center; gap: 4px; }
 .coord-lbl { color: var(--muted); }
@@ -335,17 +335,17 @@ html, body {
     flex: 1; flex-grow: 1; background: var(--bg-card); border: 1px solid var(--border);
     border-radius: var(--r-lg); display: flex;
     overflow: hidden;
-    min-height: 550px;
+    min-height: 520px;
 }
-
 
 /* ── BOTTOM PANEL ─────────────────────────────────────── */
 .bottom-panel {
-    flex-shrink: 0; min-height: 260px; height: 260px;
+    flex-shrink: 0; min-height: 250px; height: 250px;
     background: var(--bg-card); border: 1px solid var(--border);
-    border-radius: var(--r-lg) var(--r-lg) 0 0;
+    border-radius: var(--r-lg);
     display: flex; flex-direction: column; overflow: hidden;
 }
+
 .panel-tabs {
     display: flex; border-bottom: 1px solid var(--border);
     flex-shrink: 0; padding: 0 4px; height: 40px; box-sizing: border-box;
