@@ -218,11 +218,26 @@ body {
     background-clip: text;
 }
 
+.inline-nav-item {
+    color: #b0b0b0;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.05rem;
+    font-family: 'Poppins', sans-serif;
+    margin-left: 15px;
+    transition: all 0.3s ease;
+}
+
+.inline-nav-item:hover {
+    color: #00d4ff;
+}
+
 .nav-links {
     display: flex;
     align-items: center;
     gap: 24px;
 }
+
 
 .nav-links a {
     color: #b0b0b0;
