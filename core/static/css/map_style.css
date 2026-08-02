@@ -339,14 +339,14 @@ html, body {
 
 /* ── BOTTOM PANEL ─────────────────────────────────────── */
 .bottom-panel {
-    flex-shrink: 0; min-height: 220px; height: 220px;
+    flex-shrink: 0; min-height: 240px; height: 240px;
     background: var(--bg-card); border: 1px solid var(--border);
     border-radius: var(--r-lg) var(--r-lg) 0 0;
     display: flex; flex-direction: column; overflow: hidden;
 }
 .panel-tabs {
     display: flex; border-bottom: 1px solid var(--border);
-    flex-shrink: 0; padding: 0 4px;
+    flex-shrink: 0; padding: 0 4px; height: 40px; box-sizing: border-box;
 }
 .ptab {
     background: transparent; border: none; color: var(--muted);
@@ -358,16 +358,16 @@ html, body {
 .ptab:hover { color: var(--cyan); }
 .ptab.active { color: var(--cyan); border-bottom-color: var(--cyan); }
 
-.panel-content { 
-    display: none; flex: 1; overflow-y: auto; overflow-x: auto; padding: 12px 14px; 
-    max-height: 800px; min-height: 350px; scrollbar-width: thin; padding-bottom: 30px;
+.panel-content {
+    display: none; flex: 1; height: 195px; max-height: 195px; overflow-y: auto; overflow-x: auto; padding: 10px 14px;
+    box-sizing: border-box; scrollbar-width: thin !important; scrollbar-color: #00d4ff rgba(5, 8, 18, 0.8) !important;
 }
 .panel-content.active { display: flex; flex-direction: column; }
 
 /* Steps */
 .steps-feed {
     display: flex; flex-direction: column; gap: 6px;
-    max-height: 750px; overflow-y: auto; scrollbar-width: thin; padding-right: 6px;
+    max-height: 175px; height: 175px; overflow-y: scroll !important; scrollbar-width: thin !important; padding-right: 6px;
 }
 .step-item {
     display: flex; gap: 10px; padding: 10px 14px;
@@ -381,7 +381,7 @@ html, body {
 .step-title { font-size: 0.82rem; font-weight: 600; color: var(--text); }
 .step-code  { font-family: var(--mono); font-size: 0.68rem; color: var(--cyan); opacity: 0.8; margin-top: 2px; }
 
-/* Data Structures */
+/* Data Structures / Memory State */
 .ds-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; height: 100%; }
 .ds-box {
     background: var(--bg-ds); border: 1px solid var(--border);
@@ -397,17 +397,19 @@ html, body {
     background: var(--cyan-dim); color: var(--cyan); padding: 2px 8px; border-radius: 99px;
 }
 .ds-body { 
-    flex: 1; padding: 8px 12px; overflow-y: auto; display: flex; flex-direction: column; gap: 4px; 
-    max-height: 600px; min-height: 200px; scrollbar-width: thin;
+    flex: 1; padding: 8px 12px; overflow-y: scroll !important; display: flex; flex-direction: column; gap: 4px; 
+    max-height: 130px; height: 130px; scrollbar-width: thin !important;
+    scrollbar-color: #00d4ff rgba(5, 8, 18, 0.8) !important;
 }
 .empty-ds { font-size: 0.8rem; color: var(--muted); text-align: center; padding: 20px 0; font-style: italic; font-weight: 500; }
 
 /* Pseudocode */
 .pseudocode {
     background: var(--bg-code); border: 1px solid var(--border);
-    border-radius: var(--r-md); overflow-y: auto; max-height: 650px;
+    border-radius: var(--r-md); overflow-y: scroll !important; max-height: 170px; height: 170px;
     font-family: 'Courier New',monospace;
-    position: relative; flex: 1; padding-bottom: 20px; scrollbar-width: thin;
+    position: relative; flex: 1; padding-bottom: 20px; scrollbar-width: thin !important;
+    scrollbar-color: #00d4ff rgba(5, 8, 18, 0.8) !important; box-sizing: border-box;
 }
 .code-line {
     display: flex; align-items: center; padding: 4px 0;
@@ -416,7 +418,7 @@ html, body {
 .highlight-line { background: rgba(0,212,255,0.1); border-left: 3px solid var(--cyan); }
 .ln { width: 34px; flex-shrink: 0; text-align: right; padding-right: 10px; font-size: 0.67rem; color: var(--muted); opacity: 0.4; user-select: none; }
 
-/* Custom Scrollbars for All Data Panels */
+/* Always Visible Glowing Custom Scrollbars for Data Panels */
 .pseudocode::-webkit-scrollbar,
 .steps-feed::-webkit-scrollbar,
 .ds-body::-webkit-scrollbar,
@@ -424,9 +426,9 @@ html, body {
 .perf-container::-webkit-scrollbar,
 .sidebar::-webkit-scrollbar,
 .main-area::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-    display: block;
+    width: 8px !important;
+    height: 8px !important;
+    display: block !important;
 }
 
 .pseudocode::-webkit-scrollbar-track,
@@ -436,8 +438,9 @@ html, body {
 .perf-container::-webkit-scrollbar-track,
 .sidebar::-webkit-scrollbar-track,
 .main-area::-webkit-scrollbar-track {
-    background: rgba(5, 8, 18, 0.8);
-    border-radius: 99px;
+    background: rgba(5, 8, 18, 0.9) !important;
+    border-radius: 99px !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
 }
 
 .pseudocode::-webkit-scrollbar-thumb,
@@ -447,9 +450,9 @@ html, body {
 .perf-container::-webkit-scrollbar-thumb,
 .sidebar::-webkit-scrollbar-thumb,
 .main-area::-webkit-scrollbar-thumb {
-    background: var(--cyan);
-    border-radius: 99px;
-    box-shadow: 0 0 8px var(--cyan-glow);
+    background: linear-gradient(180deg, #00d4ff, #0088ff) !important;
+    border-radius: 99px !important;
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.8) !important;
 }
 
 .pseudocode::-webkit-scrollbar-thumb:hover,
@@ -459,15 +462,17 @@ html, body {
 .perf-container::-webkit-scrollbar-thumb:hover,
 .sidebar::-webkit-scrollbar-thumb:hover,
 .main-area::-webkit-scrollbar-thumb:hover {
-    background: #00e5ff;
+    background: #00ffff !important;
+    box-shadow: 0 0 14px #00ffff !important;
 }
-
 
 /* ── PERFORMANCE ANALYTICS (TAB) ───────────────────────── */
 .perf-container {
-    display: flex; flex-direction: column; height: 100%;
-    max-height: 750px; overflow-y: auto; scrollbar-width: thin;
+    display: flex; flex-direction: column; height: 175px;
+    max-height: 175px; overflow-y: scroll !important; scrollbar-width: thin !important;
+    scrollbar-color: #00d4ff rgba(5, 8, 18, 0.8) !important; padding-right: 6px;
 }
+
 
 
 .perf-header {
