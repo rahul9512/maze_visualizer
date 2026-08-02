@@ -517,8 +517,9 @@ html, body {
 /* Pseudocode */
 .pseudocode {
     background: var(--bg-code); border: 1px solid var(--border);
-    border-radius: var(--r-md); overflow-y: auto; max-height: 650px;
-    font-family: 'Courier New',monospace; scrollbar-width: thin; padding-bottom: 20px;
+    border-radius: var(--r-md); overflow-y: scroll !important; max-height: 320px;
+    font-family: 'Courier New',monospace; scrollbar-width: thin !important;
+    scrollbar-color: #00d4ff rgba(5, 8, 18, 0.8) !important; padding-bottom: 20px;
 }
 .code-line {
     display: flex; align-items: center; padding: 4px 0;
@@ -546,8 +547,8 @@ html, body {
 .pi-coords { display: flex; flex-direction: column; gap: 6px; width: 100%; }
 .pi-coords h4 { font-size: 0.76rem; color: var(--cyan); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
 .coords-list {
-    display: flex; flex-wrap: wrap; gap: 6px; max-height: 280px; min-height: 80px; overflow-y: auto;
-    scrollbar-width: thin; padding: 8px; background: rgba(0,0,0,0.25);
+    display: flex; flex-wrap: wrap; gap: 6px; max-height: 240px; min-height: 90px; overflow-y: scroll !important;
+    scrollbar-width: thin !important; scrollbar-color: #00d4ff rgba(5, 8, 18, 0.8) !important; padding: 8px; background: rgba(0,0,0,0.35);
     border: 1px solid var(--border-hi); border-radius: var(--r-md); width: 100%; box-sizing: border-box;
 }
 .coordinate-item {
@@ -557,7 +558,7 @@ html, body {
 }
 .empty-path { font-size: 0.76rem; color: var(--muted); font-style: italic; padding: 8px 0; }
 
-/* Custom Scrollbars for All Data Panels */
+/* Always Visible Glowing Custom Scrollbars for Data Panels */
 .pseudocode::-webkit-scrollbar,
 .coords-list::-webkit-scrollbar,
 .steps-feed::-webkit-scrollbar,
@@ -565,9 +566,9 @@ html, body {
 .panel-content::-webkit-scrollbar,
 .sidebar::-webkit-scrollbar,
 .main-area::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-    display: block;
+    width: 8px !important;
+    height: 8px !important;
+    display: block !important;
 }
 
 .pseudocode::-webkit-scrollbar-track,
@@ -577,8 +578,9 @@ html, body {
 .panel-content::-webkit-scrollbar-track,
 .sidebar::-webkit-scrollbar-track,
 .main-area::-webkit-scrollbar-track {
-    background: rgba(5, 8, 18, 0.8);
-    border-radius: 99px;
+    background: rgba(5, 8, 18, 0.9) !important;
+    border-radius: 99px !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
 }
 
 .pseudocode::-webkit-scrollbar-thumb,
@@ -588,9 +590,9 @@ html, body {
 .panel-content::-webkit-scrollbar-thumb,
 .sidebar::-webkit-scrollbar-thumb,
 .main-area::-webkit-scrollbar-thumb {
-    background: var(--cyan);
-    border-radius: 99px;
-    box-shadow: 0 0 8px var(--cyan-glow);
+    background: linear-gradient(180deg, #00d4ff, #0088ff) !important;
+    border-radius: 99px !important;
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.8) !important;
 }
 
 .pseudocode::-webkit-scrollbar-thumb:hover,
@@ -600,8 +602,10 @@ html, body {
 .panel-content::-webkit-scrollbar-thumb:hover,
 .sidebar::-webkit-scrollbar-thumb:hover,
 .main-area::-webkit-scrollbar-thumb:hover {
-    background: #00e5ff;
+    background: #00ffff !important;
+    box-shadow: 0 0 14px #00ffff !important;
 }
+
 
 
 
