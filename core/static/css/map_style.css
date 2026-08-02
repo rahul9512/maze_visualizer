@@ -339,7 +339,7 @@ html, body {
 
 /* ── BOTTOM PANEL ─────────────────────────────────────── */
 .bottom-panel {
-    flex-shrink: 0; min-height: 240px; height: 240px;
+    flex-shrink: 0; min-height: 260px; height: 260px;
     background: var(--bg-card); border: 1px solid var(--border);
     border-radius: var(--r-lg) var(--r-lg) 0 0;
     display: flex; flex-direction: column; overflow: hidden;
@@ -359,7 +359,7 @@ html, body {
 .ptab.active { color: var(--cyan); border-bottom-color: var(--cyan); }
 
 .panel-content {
-    display: none; flex: 1; height: 195px; max-height: 195px; overflow-y: auto; overflow-x: auto; padding: 10px 14px;
+    display: none; flex: 1; height: 215px; max-height: 215px; overflow-y: auto; overflow-x: auto; padding: 10px 14px;
     box-sizing: border-box; scrollbar-width: thin !important; scrollbar-color: #00d4ff rgba(5, 8, 18, 0.8) !important;
 }
 .panel-content.active { display: flex; flex-direction: column; }
@@ -367,7 +367,7 @@ html, body {
 /* Steps */
 .steps-feed {
     display: flex; flex-direction: column; gap: 6px;
-    max-height: 175px; height: 175px; overflow-y: scroll !important; scrollbar-width: thin !important; padding-right: 6px;
+    max-height: 190px; height: 190px; overflow-y: scroll !important; scrollbar-width: thin !important; padding-right: 6px;
 }
 .step-item {
     display: flex; gap: 10px; padding: 10px 14px;
@@ -398,7 +398,7 @@ html, body {
 }
 .ds-body { 
     flex: 1; padding: 8px 12px; overflow-y: scroll !important; display: flex; flex-direction: column; gap: 4px; 
-    max-height: 130px; height: 130px; scrollbar-width: thin !important;
+    max-height: 145px; height: 145px; scrollbar-width: thin !important;
     scrollbar-color: #00d4ff rgba(5, 8, 18, 0.8) !important;
 }
 .empty-ds { font-size: 0.8rem; color: var(--muted); text-align: center; padding: 20px 0; font-style: italic; font-weight: 500; }
@@ -406,7 +406,7 @@ html, body {
 /* Pseudocode */
 .pseudocode {
     background: var(--bg-code); border: 1px solid var(--border);
-    border-radius: var(--r-md); overflow-y: scroll !important; max-height: 170px; height: 170px;
+    border-radius: var(--r-md); overflow-y: scroll !important; max-height: 190px; height: 190px;
     font-family: 'Courier New',monospace;
     position: relative; flex: 1; padding-bottom: 20px; scrollbar-width: thin !important;
     scrollbar-color: #00d4ff rgba(5, 8, 18, 0.8) !important; box-sizing: border-box;
@@ -468,10 +468,11 @@ html, body {
 
 /* ── PERFORMANCE ANALYTICS (TAB) ───────────────────────── */
 .perf-container {
-    display: flex; flex-direction: column; height: 175px;
-    max-height: 175px; overflow-y: scroll !important; scrollbar-width: thin !important;
+    display: flex; flex-direction: column; height: 190px;
+    max-height: 190px; overflow-y: scroll !important; scrollbar-width: thin !important;
     scrollbar-color: #00d4ff rgba(5, 8, 18, 0.8) !important; padding-right: 6px;
 }
+
 
 
 
@@ -584,6 +585,26 @@ body {
 }
 
 @media (max-width: 900px) {
+    .perf-grid, .ds-grid {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+    }
+
+    .bottom-panel {
+        min-height: 280px !important;
+        height: auto !important;
+    }
+
+    .panel-content {
+        height: auto !important;
+        max-height: 320px !important;
+    }
+
+    .perf-container, .steps-feed, .ds-body, .pseudocode {
+        max-height: 240px !important;
+        height: auto !important;
+    }
+
     .topbar {
         padding: 0 12px;
         gap: 8px;
@@ -610,6 +631,7 @@ body {
         grid-template-columns: 1fr 1fr;
     }
 }
+
 
 @media (max-width: 600px) {
     .topbar {
