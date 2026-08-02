@@ -360,14 +360,14 @@ html, body {
 
 .panel-content { 
     display: none; flex: 1; overflow-y: auto; overflow-x: auto; padding: 12px 14px; 
-    max-height: 480px; min-height: 250px; scrollbar-width: thin;
+    max-height: 800px; min-height: 350px; scrollbar-width: thin; padding-bottom: 30px;
 }
 .panel-content.active { display: flex; flex-direction: column; }
 
 /* Steps */
 .steps-feed {
     display: flex; flex-direction: column; gap: 6px;
-    max-height: 420px; overflow-y: auto; scrollbar-width: thin; padding-right: 4px;
+    max-height: 750px; overflow-y: auto; scrollbar-width: thin; padding-right: 6px;
 }
 .step-item {
     display: flex; gap: 10px; padding: 10px 14px;
@@ -398,14 +398,14 @@ html, body {
 }
 .ds-body { 
     flex: 1; padding: 8px 12px; overflow-y: auto; display: flex; flex-direction: column; gap: 4px; 
-    max-height: 320px; min-height: 140px; scrollbar-width: thin;
+    max-height: 600px; min-height: 200px; scrollbar-width: thin;
 }
 .empty-ds { font-size: 0.8rem; color: var(--muted); text-align: center; padding: 20px 0; font-style: italic; font-weight: 500; }
 
 /* Pseudocode */
 .pseudocode {
     background: var(--bg-code); border: 1px solid var(--border);
-    border-radius: var(--r-md); overflow-y: auto; max-height: 360px;
+    border-radius: var(--r-md); overflow-y: auto; max-height: 650px;
     font-family: 'Courier New',monospace;
     position: relative; flex: 1; padding-bottom: 20px; scrollbar-width: thin;
 }
@@ -419,8 +419,9 @@ html, body {
 /* ── PERFORMANCE ANALYTICS (TAB) ───────────────────────── */
 .perf-container {
     display: flex; flex-direction: column; height: 100%;
-    max-height: 450px; overflow-y: auto; scrollbar-width: thin;
+    max-height: 750px; overflow-y: auto; scrollbar-width: thin;
 }
+
 
 .perf-header {
     display: flex; justify-content: space-between; align-items: center;
