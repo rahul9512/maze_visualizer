@@ -568,12 +568,13 @@ class MazeVisualizer {
                 el.className = 'grid-cell';
                 el.dataset.x = x; el.dataset.y = y;
 
-                if (cellSize >= 22) {
+                if (cellSize >= 12) {
                     const num = document.createElement('div');
                     num.className = 'cell-number';
                     num.textContent = `${x},${y}`;
                     el.appendChild(num);
                 }
+
 
 
                 el.addEventListener('click', () => this.handleCellClick(x, y));

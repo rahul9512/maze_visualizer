@@ -410,9 +410,16 @@ html, body {
 .grid-cell.current  { box-shadow: 0 0 0 2px var(--cyan); z-index: 1; }
 .grid-cell.tabu-cell { background: linear-gradient(135deg,#7c3aed,#5b21b6); }
 .cell-number {
-    position: absolute; top: 1px; left: 2px;
-    font-size: 0.45rem; color: rgba(255,255,255,0.4); pointer-events: none;
+    position: absolute; top: 1px; left: 1px;
+    font-size: clamp(0.42rem, 1.4vw, 0.58rem);
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.75);
+    pointer-events: none;
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.95);
+    z-index: 2;
+    line-height: 1;
 }
+
 .grid-cell.best-node {
     box-shadow: 0 0 15px rgba(255, 215, 0, 0.8), inset 0 0 10px rgba(255, 215, 0, 0.5);
     border: 2px solid #ffd700;
