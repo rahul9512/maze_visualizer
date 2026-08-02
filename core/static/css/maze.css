@@ -82,12 +82,26 @@ html, body {
 }
 
 .topbar-left { display: flex; align-items: center; gap: 8px; flex-shrink: 0; z-index: 5001; }
-.topbar-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; margin-left: auto; z-index: 5001; }
+.topbar-right {
+    display: flex; align-items: center; gap: 8px; flex-shrink: 0; margin-left: auto; z-index: 5001;
+    overflow-x: auto; max-width: 45vw; scrollbar-width: thin; scrollbar-color: var(--cyan) transparent;
+}
+.topbar-right::-webkit-scrollbar {
+    height: 4px; display: block;
+}
+.topbar-right::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3); border-radius: 99px;
+}
+.topbar-right::-webkit-scrollbar-thumb {
+    background: var(--cyan); border-radius: 99px; box-shadow: 0 0 6px var(--cyan-glow);
+}
+
 .topbar-center {
     position: absolute; left: 50%; transform: translateX(-50%);
     display: flex; align-items: center; justify-content: center; gap: 12px;
     flex-shrink: 0; z-index: 5100; overflow: visible;
 }
+
 
 
 /* Brand */
