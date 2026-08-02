@@ -550,6 +550,53 @@ html, body {
 }
 .empty-path { font-size: 0.76rem; color: var(--muted); font-style: italic; padding: 8px 0; }
 
+/* Custom Scrollbars for All Data Panels */
+.pseudocode::-webkit-scrollbar,
+.coords-list::-webkit-scrollbar,
+.steps-feed::-webkit-scrollbar,
+.ds-body::-webkit-scrollbar,
+.panel-content::-webkit-scrollbar,
+.sidebar::-webkit-scrollbar,
+.main-area::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    display: block;
+}
+
+.pseudocode::-webkit-scrollbar-track,
+.coords-list::-webkit-scrollbar-track,
+.steps-feed::-webkit-scrollbar-track,
+.ds-body::-webkit-scrollbar-track,
+.panel-content::-webkit-scrollbar-track,
+.sidebar::-webkit-scrollbar-track,
+.main-area::-webkit-scrollbar-track {
+    background: rgba(5, 8, 18, 0.8);
+    border-radius: 99px;
+}
+
+.pseudocode::-webkit-scrollbar-thumb,
+.coords-list::-webkit-scrollbar-thumb,
+.steps-feed::-webkit-scrollbar-thumb,
+.ds-body::-webkit-scrollbar-thumb,
+.panel-content::-webkit-scrollbar-thumb,
+.sidebar::-webkit-scrollbar-thumb,
+.main-area::-webkit-scrollbar-thumb {
+    background: var(--cyan);
+    border-radius: 99px;
+    box-shadow: 0 0 8px var(--cyan-glow);
+}
+
+.pseudocode::-webkit-scrollbar-thumb:hover,
+.coords-list::-webkit-scrollbar-thumb:hover,
+.steps-feed::-webkit-scrollbar-thumb:hover,
+.ds-body::-webkit-scrollbar-thumb:hover,
+.panel-content::-webkit-scrollbar-thumb:hover,
+.sidebar::-webkit-scrollbar-thumb:hover,
+.main-area::-webkit-scrollbar-thumb:hover {
+    background: #00e5ff;
+}
+
+
 
 
 

@@ -416,6 +416,53 @@ html, body {
 .highlight-line { background: rgba(0,212,255,0.1); border-left: 3px solid var(--cyan); }
 .ln { width: 34px; flex-shrink: 0; text-align: right; padding-right: 10px; font-size: 0.67rem; color: var(--muted); opacity: 0.4; user-select: none; }
 
+/* Custom Scrollbars for All Data Panels */
+.pseudocode::-webkit-scrollbar,
+.steps-feed::-webkit-scrollbar,
+.ds-body::-webkit-scrollbar,
+.panel-content::-webkit-scrollbar,
+.perf-container::-webkit-scrollbar,
+.sidebar::-webkit-scrollbar,
+.main-area::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    display: block;
+}
+
+.pseudocode::-webkit-scrollbar-track,
+.steps-feed::-webkit-scrollbar-track,
+.ds-body::-webkit-scrollbar-track,
+.panel-content::-webkit-scrollbar-track,
+.perf-container::-webkit-scrollbar-track,
+.sidebar::-webkit-scrollbar-track,
+.main-area::-webkit-scrollbar-track {
+    background: rgba(5, 8, 18, 0.8);
+    border-radius: 99px;
+}
+
+.pseudocode::-webkit-scrollbar-thumb,
+.steps-feed::-webkit-scrollbar-thumb,
+.ds-body::-webkit-scrollbar-thumb,
+.panel-content::-webkit-scrollbar-thumb,
+.perf-container::-webkit-scrollbar-thumb,
+.sidebar::-webkit-scrollbar-thumb,
+.main-area::-webkit-scrollbar-thumb {
+    background: var(--cyan);
+    border-radius: 99px;
+    box-shadow: 0 0 8px var(--cyan-glow);
+}
+
+.pseudocode::-webkit-scrollbar-thumb:hover,
+.steps-feed::-webkit-scrollbar-thumb:hover,
+.ds-body::-webkit-scrollbar-thumb:hover,
+.panel-content::-webkit-scrollbar-thumb:hover,
+.perf-container::-webkit-scrollbar-thumb:hover,
+.sidebar::-webkit-scrollbar-thumb:hover,
+.main-area::-webkit-scrollbar-thumb:hover {
+    background: #00e5ff;
+}
+
+
 /* ── PERFORMANCE ANALYTICS (TAB) ───────────────────────── */
 .perf-container {
     display: flex; flex-direction: column; height: 100%;
