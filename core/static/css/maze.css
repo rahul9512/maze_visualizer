@@ -31,8 +31,9 @@
     --mono:       'Orbitron', monospace;
     --ui:         'Inter', sans-serif;
     --sidebar-w:  255px;
-    --topbar-h:   50px;
+    --topbar-h:   46px;
     --r-lg:       10px;
+
     --r-md:       7px;
     --r-sm:       4px;
     --shadow:     0 4px 24px rgba(0,0,0,0.5);
@@ -714,17 +715,21 @@ html, body {
 }
 
 /* ─── RESPONSIVE SCROLLBAR LAYOUT ─── */
-body {
-    overflow-x: auto;
-    overflow-y: auto;
+html, body {
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
 }
 
 .app-layout {
     display: grid;
     grid-template-columns: 320px 1fr;
-    height: calc(100vh - 60px);
+    height: calc(100vh - var(--topbar-h));
+    min-height: 0;
     min-width: 850px;
-    overflow: auto;
+    overflow: hidden;
+    padding-bottom: 0;
 }
 
 .sidebar {
@@ -732,15 +737,21 @@ body {
     height: 100%;
     overflow-y: auto;
     scrollbar-width: thin;
+    padding-bottom: 20px;
 }
 
 .main-area {
     height: 100%;
-    overflow: auto;
-    scrollbar-width: thin;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 4px 8px 0;
+    gap: 4px;
+    padding-bottom: 0;
 }
 
 .maze-wrapper {
+    flex: 1;
     overflow: auto;
     max-width: 100%;
     max-height: 100%;
@@ -749,6 +760,7 @@ body {
     justify-content: center;
     align-items: center;
 }
+
 
 @media (max-width: 900px) {
     .pseudocode, .coords-list, .steps-feed, .ds-body, .panel-content {
