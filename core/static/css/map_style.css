@@ -359,13 +359,16 @@ html, body {
 .ptab.active { color: var(--cyan); border-bottom-color: var(--cyan); }
 
 .panel-content { 
-    display: none; flex: 1; overflow-y: auto; padding: 12px 14px; 
-    min-height: 0; /* Critical for internal scrolling in flex boxes */
+    display: none; flex: 1; overflow-y: auto; overflow-x: auto; padding: 12px 14px; 
+    max-height: 480px; min-height: 250px; scrollbar-width: thin;
 }
 .panel-content.active { display: flex; flex-direction: column; }
 
 /* Steps */
-.steps-feed { display: flex; flex-direction: column; gap: 6px; }
+.steps-feed {
+    display: flex; flex-direction: column; gap: 6px;
+    max-height: 420px; overflow-y: auto; scrollbar-width: thin; padding-right: 4px;
+}
 .step-item {
     display: flex; gap: 10px; padding: 10px 14px;
     background: var(--item-bg); border-radius: var(--r-md);
@@ -395,16 +398,16 @@ html, body {
 }
 .ds-body { 
     flex: 1; padding: 8px 12px; overflow-y: auto; display: flex; flex-direction: column; gap: 4px; 
-    min-height: 0;
+    max-height: 320px; min-height: 140px; scrollbar-width: thin;
 }
 .empty-ds { font-size: 0.8rem; color: var(--muted); text-align: center; padding: 20px 0; font-style: italic; font-weight: 500; }
 
 /* Pseudocode */
 .pseudocode {
     background: var(--bg-code); border: 1px solid var(--border);
-    border-radius: var(--r-md); overflow-y: auto;
+    border-radius: var(--r-md); overflow-y: auto; max-height: 360px;
     font-family: 'Courier New',monospace;
-    position: relative; flex: 1; padding-bottom: 20px;
+    position: relative; flex: 1; padding-bottom: 20px; scrollbar-width: thin;
 }
 .code-line {
     display: flex; align-items: center; padding: 4px 0;
@@ -414,7 +417,11 @@ html, body {
 .ln { width: 34px; flex-shrink: 0; text-align: right; padding-right: 10px; font-size: 0.67rem; color: var(--muted); opacity: 0.4; user-select: none; }
 
 /* ── PERFORMANCE ANALYTICS (TAB) ───────────────────────── */
-.perf-container { display: flex; flex-direction: column; height: 100%; }
+.perf-container {
+    display: flex; flex-direction: column; height: 100%;
+    max-height: 450px; overflow-y: auto; scrollbar-width: thin;
+}
+
 .perf-header {
     display: flex; justify-content: space-between; align-items: center;
     padding-bottom: 12px; margin-bottom: 12px; border-bottom: 1px solid var(--border);
