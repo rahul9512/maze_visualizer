@@ -31,9 +31,8 @@
     --mono:       'Orbitron', monospace;
     --ui:         'Inter', sans-serif;
     --sidebar-w:  255px;
-    --topbar-h:   46px;
+    --topbar-h:   50px;
     --r-lg:       10px;
-
     --r-md:       7px;
     --r-sm:       4px;
     --shadow:     0 4px 24px rgba(0,0,0,0.5);
@@ -357,8 +356,9 @@ html, body {
 /* ── MAIN AREA ───────────────────────────────────────── */
 .main-area {
     flex: 1; display: flex; flex-direction: column;
-    overflow: hidden; padding: 6px 8px 0; gap: 5px; min-width: 0;
+    overflow: hidden; padding: 0 12px 0 0; gap: 10px; min-width: 0;
 }
+
 
 /* Stats row */
 .stats-row {
@@ -715,43 +715,39 @@ html, body {
 }
 
 /* ─── RESPONSIVE SCROLLBAR LAYOUT ─── */
-html, body {
-    height: 100vh;
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
+body {
+    overflow-x: auto;
+    overflow-y: auto;
 }
 
 .app-layout {
     display: grid;
     grid-template-columns: 320px 1fr;
-    height: calc(100vh - var(--topbar-h));
-    min-height: 0;
+    min-height: calc(100vh - 60px);
+    height: auto;
     min-width: 850px;
-    overflow: hidden;
-    padding-bottom: 0;
+    overflow: auto;
+    padding-top: 14px;
+    padding-left: 12px;
+    padding-right: 12px;
+    gap: 14px;
 }
+
 
 .sidebar {
     width: 320px;
     height: 100%;
     overflow-y: auto;
     scrollbar-width: thin;
-    padding-bottom: 20px;
 }
 
 .main-area {
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    padding: 4px 8px 0;
-    gap: 4px;
-    padding-bottom: 0;
+    overflow: auto;
+    scrollbar-width: thin;
 }
 
 .maze-wrapper {
-    flex: 1;
     overflow: auto;
     max-width: 100%;
     max-height: 100%;
@@ -761,54 +757,9 @@ html, body {
     align-items: center;
 }
 
-
 @media (max-width: 900px) {
-    html, body {
-        overflow-y: auto !important;
-        height: auto !important;
-        min-height: 100vh;
-    }
-
-    .app-layout {
-        display: block !important;
-        height: auto !important;
-        min-height: calc(100vh - var(--topbar-h));
-        min-width: 0 !important;
-        overflow-y: auto !important;
-        padding-bottom: 90px !important;
-    }
-
-    .sidebar {
-        width: 100% !important;
-        height: auto !important;
-        overflow-y: auto !important;
-        padding-bottom: 40px !important;
-    }
-
-    .main-area {
-        height: auto !important;
-        overflow-y: auto !important;
-        padding-bottom: 90px !important;
-    }
-
-    .bottom-panel {
-        min-height: 280px !important;
-        height: auto !important;
-        overflow-y: visible !important;
-    }
-
-    .panel-content {
-        height: auto !important;
-        max-height: 75vh !important;
-        overflow-y: auto !important;
-        -webkit-overflow-scrolling: touch !important;
-        padding-bottom: 40px !important;
-    }
-
-    .pseudocode, .coords-list, .steps-feed, .ds-body {
-        max-height: 65vh !important;
-        height: auto !important;
-        overflow-y: auto !important;
+    .pseudocode, .coords-list, .steps-feed, .ds-body, .panel-content {
+        overflow-y: scroll !important;
         -webkit-overflow-scrolling: touch !important;
     }
 
@@ -847,7 +798,6 @@ html, body {
         overflow: visible;
         min-width: 750px;
     }
-
 
 
     .topbar-center {
