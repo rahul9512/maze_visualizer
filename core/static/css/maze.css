@@ -440,15 +440,16 @@ html, body {
 @keyframes pulseE { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.8;transform:scale(.94)} }
 
 /* ── BOTTOM PANEL ─────────────────────────────────────── */
+/* ── BOTTOM PANEL ─────────────────────────────────────── */
 .bottom-panel {
-    flex-shrink: 0; min-height: 180px; height: 180px;
+    flex-shrink: 0; min-height: 240px; height: 240px;
     background: var(--bg-card); border: 1px solid var(--border);
     border-radius: var(--r-lg) var(--r-lg) 0 0;
     display: flex; flex-direction: column; overflow: hidden;
 }
 .panel-tabs {
     display: flex; border-bottom: 1px solid var(--border);
-    flex-shrink: 0; padding: 0 4px;
+    flex-shrink: 0; padding: 0 4px; height: 40px; box-sizing: border-box;
 }
 .ptab {
     background: transparent; border: none; color: var(--muted);
@@ -461,15 +462,15 @@ html, body {
 .ptab.active { color: var(--cyan); border-bottom-color: var(--cyan); }
 
 .panel-content {
-    display: none; flex: 1; overflow-y: auto; overflow-x: auto; padding: 12px 14px;
-    max-height: 800px; min-height: 350px; scrollbar-width: thin; padding-bottom: 30px;
+    display: none; flex: 1; height: 195px; max-height: 195px; overflow-y: auto; overflow-x: auto; padding: 10px 14px;
+    box-sizing: border-box; scrollbar-width: thin !important; scrollbar-color: #00d4ff rgba(5, 8, 18, 0.8) !important;
 }
 .panel-content.active { display: block; }
 
 /* Steps */
 .steps-feed {
     display: flex; flex-direction: column; gap: 6px;
-    max-height: 750px; overflow-y: auto; scrollbar-width: thin; padding-right: 6px;
+    max-height: 175px; height: 175px; overflow-y: scroll !important; scrollbar-width: thin !important; padding-right: 6px;
 }
 .step-item {
     display: flex; gap: 10px; padding: 8px 12px;
@@ -504,8 +505,8 @@ html, body {
     background: var(--cyan-dim); color: var(--cyan); padding: 2px 8px; border-radius: 99px;
 }
 .ds-body {
-    flex: 1; padding: 8px 12px; overflow-y: auto; display: flex; flex-direction: column; gap: 4px;
-    max-height: 600px; min-height: 200px; scrollbar-width: thin;
+    flex: 1; padding: 8px 12px; overflow-y: scroll !important; display: flex; flex-direction: column; gap: 4px;
+    max-height: 130px; height: 130px; scrollbar-width: thin;
 }
 .empty-ds { font-size: 0.82rem; color: var(--muted); text-align: center; padding: 12px 0; font-style: italic; }
 .ds-item {
@@ -517,9 +518,9 @@ html, body {
 /* Pseudocode */
 .pseudocode {
     background: var(--bg-code); border: 1px solid var(--border);
-    border-radius: var(--r-md); overflow-y: scroll !important; max-height: 320px;
+    border-radius: var(--r-md); overflow-y: scroll !important; max-height: 170px; height: 170px;
     font-family: 'Courier New',monospace; scrollbar-width: thin !important;
-    scrollbar-color: #00d4ff rgba(5, 8, 18, 0.8) !important; padding-bottom: 20px;
+    scrollbar-color: #00d4ff rgba(5, 8, 18, 0.8) !important; padding-bottom: 20px; box-sizing: border-box;
 }
 .code-line {
     display: flex; align-items: center; padding: 4px 0;
@@ -547,10 +548,11 @@ html, body {
 .pi-coords { display: flex; flex-direction: column; gap: 6px; width: 100%; }
 .pi-coords h4 { font-size: 0.76rem; color: var(--cyan); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
 .coords-list {
-    display: flex; flex-wrap: wrap; gap: 6px; max-height: 240px; min-height: 90px; overflow-y: scroll !important;
+    display: flex; flex-wrap: wrap; gap: 6px; max-height: 130px; height: 130px; overflow-y: scroll !important;
     scrollbar-width: thin !important; scrollbar-color: #00d4ff rgba(5, 8, 18, 0.8) !important; padding: 8px; background: rgba(0,0,0,0.35);
     border: 1px solid var(--border-hi); border-radius: var(--r-md); width: 100%; box-sizing: border-box;
 }
+
 .coordinate-item {
     font-family: var(--mono); font-size: 0.72rem; font-weight: 600; color: var(--cyan);
     background: var(--cyan-dim); border: 1px solid var(--border-hi); padding: 3px 8px; border-radius: var(--r-sm);
