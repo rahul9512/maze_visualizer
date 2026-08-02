@@ -60,8 +60,9 @@
 }
 
 html, body { 
-    height: 100vh; font-family: var(--ui); background: var(--bg-deep); color: var(--text); overflow: hidden; margin: 0; padding: 0; 
+    min-height: 100vh; font-family: var(--ui); background: var(--bg-deep); color: var(--text); overflow: auto; margin: 0; padding: 0; 
 }
+
 
 ::-webkit-scrollbar { width: 4px; height: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
@@ -567,7 +568,7 @@ body {
     min-height: calc(100vh - 60px);
     height: auto;
     min-width: 850px;
-    overflow-y: auto;
+    overflow: auto;
     padding-top: 14px;
     padding-left: 12px;
     padding-right: 12px;
@@ -575,23 +576,26 @@ body {
     gap: 14px;
 }
 
-
 .sidebar {
     width: 320px;
-    height: 100%;
+    flex-shrink: 0;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
     overflow-y: auto;
-    scrollbar-width: thin;
-    padding-bottom: 40px;
+    overflow-x: hidden;
 }
 
 .main-area {
-    height: auto;
-    min-height: 100%;
-    overflow-y: auto;
-    scrollbar-width: auto;
-    scrollbar-color: #00d4ff rgba(5, 8, 18, 0.8);
-    padding-bottom: 70px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 0;
+    gap: 12px;
+    min-width: 0;
 }
+
 
 
 #map {
