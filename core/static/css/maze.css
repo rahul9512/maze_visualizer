@@ -82,26 +82,12 @@ html, body {
 }
 
 .topbar-left { display: flex; align-items: center; gap: 8px; flex-shrink: 0; z-index: 5001; }
-.topbar-right {
-    display: flex; align-items: center; gap: 8px; flex-shrink: 0; margin-left: auto; z-index: 5001;
-    overflow-x: auto; max-width: 45vw; scrollbar-width: thin; scrollbar-color: var(--cyan) transparent;
-}
-.topbar-right::-webkit-scrollbar {
-    height: 4px; display: block;
-}
-.topbar-right::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.3); border-radius: 99px;
-}
-.topbar-right::-webkit-scrollbar-thumb {
-    background: var(--cyan); border-radius: 99px; box-shadow: 0 0 6px var(--cyan-glow);
-}
-
+.topbar-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; margin-left: auto; z-index: 5001; }
 .topbar-center {
     position: absolute; left: 50%; transform: translateX(-50%);
     display: flex; align-items: center; justify-content: center; gap: 12px;
     flex-shrink: 0; z-index: 5100; overflow: visible;
 }
-
 
 
 /* Brand */
@@ -549,20 +535,21 @@ html, body {
 /* ── MODAL ───────────────────────────────────────────── */
 .modal-backdrop {
     position: fixed; inset: 0; background: rgba(0,0,0,0.75);
-    backdrop-filter: blur(5px); z-index: 500;
+    backdrop-filter: blur(5px); z-index: 9000;
     display: flex; align-items: center; justify-content: center;
     opacity: 0; pointer-events: none; transition: opacity 0.22s ease;
 }
 .modal-backdrop.active { opacity: 1; pointer-events: all; }
 .modal {
     background: rgba(10,15,28,0.99); border: 1px solid var(--border-hi);
-    border-radius: var(--r-lg); width: 640px; max-width: 95vw;
-    box-shadow: var(--shadow); transform: translateY(10px); transition: transform 0.22s ease;
+    border-radius: var(--r-lg); width: 680px; max-width: 92vw; max-height: 85vh;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.85); transform: translateY(10px); transition: transform 0.22s ease;
+    display: flex; flex-direction: column; overflow: hidden;
 }
 .modal-backdrop.active .modal { transform: translateY(0); }
 .modal-head {
     display: flex; align-items: center; justify-content: space-between;
-    padding: 15px 20px; border-bottom: 1px solid var(--border);
+    padding: 15px 20px; border-bottom: 1px solid var(--border); flex-shrink: 0;
 }
 .modal-head h3 { font-size: 0.95rem; font-weight: 600; color: var(--cyan); display: flex; align-items: center; gap: 8px; }
 .modal-close {
@@ -571,11 +558,25 @@ html, body {
     display: flex; align-items: center; justify-content: center; transition: var(--tr);
 }
 .modal-close:hover { color: var(--red); border-color: var(--red); }
-.modal-body { padding: 18px 20px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+.modal-body {
+    padding: 18px 20px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px;
+    max-height: 70vh; overflow-y: auto; overflow-x: auto;
+    scrollbar-width: thin; scrollbar-color: var(--cyan) rgba(5, 8, 18, 0.8);
+}
+.modal-body::-webkit-scrollbar {
+    width: 6px; height: 6px; display: block;
+}
+.modal-body::-webkit-scrollbar-track {
+    background: rgba(5, 8, 18, 0.8); border-radius: 99px;
+}
+.modal-body::-webkit-scrollbar-thumb {
+    background: var(--cyan); border-radius: 99px; box-shadow: 0 0 10px var(--cyan-glow);
+}
 .help-col h4 { font-size: 0.8rem; color: var(--cyan); margin-bottom: 9px; display: flex; align-items: center; gap: 7px; }
 .help-col ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
 .help-col li { font-size: 0.74rem; color: var(--muted); padding-left: 11px; position: relative; line-height: 1.5; }
 .help-col li::before { content:'›'; position: absolute; left:0; color: var(--cyan); }
+
 
 /* --- Search Status Overlay --- */
 .search-status-overlay {
@@ -688,8 +689,8 @@ body {
 
 @media (max-width: 900px) {
     .topbar {
-        padding: 0 16px;
-        gap: 12px;
+        padding: 0 12px;
+        gap: 8px;
         overflow: visible;
         min-width: 850px;
     }
@@ -699,11 +700,51 @@ body {
         overflow: visible;
     }
 
+    .cat-label {
+        padding: 6px 10px;
+        font-size: 0.76rem;
+    }
+
+    .tb-btn {
+        padding: 5px 9px;
+        font-size: 0.76rem;
+    }
+
     .stats-row {
         flex-wrap: wrap;
     }
 
     .stat-chip {
         min-width: 110px;
+    }
+
+    .modal-body {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .topbar {
+        padding: 0 8px;
+        gap: 6px;
+        min-width: 800px;
+    }
+
+    .brand-name {
+        font-size: 0.85rem;
+    }
+
+    .cat-label {
+        padding: 5px 8px;
+        font-size: 0.72rem;
+    }
+
+    .tb-btn {
+        padding: 4px 7px;
+        font-size: 0.72rem;
+    }
+
+    .modal-body {
+        grid-template-columns: 1fr;
     }
 }
