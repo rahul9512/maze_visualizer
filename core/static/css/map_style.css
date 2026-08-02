@@ -532,6 +532,44 @@ body {
 }
 
 @media (max-width: 900px) {
+    html, body {
+        overflow-y: auto !important;
+        height: auto !important;
+        min-height: 100vh;
+    }
+
+    .app-layout {
+        height: auto !important;
+        min-height: calc(100vh - 60px);
+        overflow-y: auto !important;
+        padding-bottom: 90px;
+    }
+
+    .main-area {
+        height: auto !important;
+        overflow-y: auto !important;
+        padding-bottom: 90px;
+    }
+
+    .sidebar {
+        height: auto !important;
+        overflow-y: auto !important;
+        padding-bottom: 40px;
+    }
+
+    .panel-content {
+        max-height: 80vh !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 50px;
+    }
+
+    .steps-feed, .pseudocode, .ds-body, .perf-container {
+        max-height: 70vh !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch;
+    }
+
     .topbar {
         padding: 0 12px;
         gap: 8px;
