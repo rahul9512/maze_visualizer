@@ -601,24 +601,34 @@ html, body {
     html, body {
         overflow-y: auto !important;
         height: auto !important;
+        min-height: 100vh;
     }
 
     .app-layout {
+        display: block !important;
         height: auto !important;
         min-height: calc(100vh - var(--topbar-h));
+        min-width: 0 !important;
         overflow-y: auto !important;
-        padding-bottom: 80px;
+        padding-bottom: 90px !important;
+    }
+
+    .sidebar {
+        width: 100% !important;
+        height: auto !important;
+        overflow-y: auto !important;
+        padding-bottom: 40px !important;
     }
 
     .main-area {
         height: auto !important;
         overflow-y: auto !important;
-        padding-bottom: 80px;
+        padding-bottom: 90px !important;
     }
 
     #map {
-        min-height: 520px !important;
-        height: 520px !important;
+        min-height: 480px !important;
+        height: 480px !important;
     }
 
     .perf-grid, .ds-grid {
@@ -629,13 +639,25 @@ html, body {
     .bottom-panel {
         min-height: 280px !important;
         height: auto !important;
+        overflow-y: visible !important;
     }
 
     .panel-content {
         height: auto !important;
-        max-height: 320px !important;
+        max-height: 75vh !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        padding-bottom: 40px !important;
+    }
+
+    .steps-feed, .pseudocode, .ds-body, .perf-container {
+        max-height: 65vh !important;
+        height: auto !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
     }
 }
+
 
 
     .perf-container, .steps-feed, .ds-body, .pseudocode {
