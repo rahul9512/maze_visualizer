@@ -505,7 +505,7 @@ html, body {
     background: var(--cyan-dim); color: var(--cyan); padding: 2px 8px; border-radius: 99px;
 }
 .ds-body {
-    flex: 1; padding: 8px 12px; overflow-y: scroll !important; display: flex; flex-direction: column; gap: 4px;
+    flex: 1; padding: 8px 12px; overflow-y: auto; display: flex; flex-direction: column; gap: 4px;
     max-height: 130px; height: 130px; scrollbar-width: thin;
 }
 .empty-ds { font-size: 0.82rem; color: var(--muted); text-align: center; padding: 12px 0; font-style: italic; }
@@ -518,9 +518,9 @@ html, body {
 /* Pseudocode */
 .pseudocode {
     background: var(--bg-code); border: 1px solid var(--border);
-    border-radius: var(--r-md); overflow-y: scroll !important; max-height: 170px; height: 170px;
-    font-family: 'Courier New',monospace; scrollbar-width: thin !important;
-    scrollbar-color: #00d4ff rgba(5, 8, 18, 0.8) !important; padding-bottom: 20px; box-sizing: border-box;
+    border-radius: var(--r-md); overflow-y: auto; max-height: 170px; height: 170px;
+    font-family: 'Courier New',monospace; scrollbar-width: thin;
+    padding-bottom: 20px; box-sizing: border-box;
 }
 .code-line {
     display: flex; align-items: center; padding: 4px 0;
@@ -548,8 +548,8 @@ html, body {
 .pi-coords { display: flex; flex-direction: column; gap: 6px; width: 100%; }
 .pi-coords h4 { font-size: 0.76rem; color: var(--cyan); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
 .coords-list {
-    display: flex; flex-wrap: wrap; gap: 6px; max-height: 130px; height: 130px; overflow-y: scroll !important;
-    scrollbar-width: thin !important; scrollbar-color: #00d4ff rgba(5, 8, 18, 0.8) !important; padding: 8px; background: rgba(0,0,0,0.35);
+    display: flex; flex-wrap: wrap; gap: 6px; max-height: 130px; height: 130px; overflow-y: auto;
+    scrollbar-width: thin; padding: 8px; background: rgba(0,0,0,0.35);
     border: 1px solid var(--border-hi); border-radius: var(--r-md); width: 100%; box-sizing: border-box;
 }
 
@@ -561,24 +561,6 @@ html, body {
 .empty-path { font-size: 0.76rem; color: var(--muted); font-style: italic; padding: 8px 0; }
 
 /* Always Visible Glowing Custom Scrollbars for Data Panels */
-.pseudocode::-webkit-scrollbar,
-.coords-list::-webkit-scrollbar,
-.steps-feed::-webkit-scrollbar,
-.ds-body::-webkit-scrollbar,
-.panel-content::-webkit-scrollbar,
-.sidebar::-webkit-scrollbar,
-.main-area::-webkit-scrollbar {
-    width: 8px !important;
-    height: 8px !important;
-    display: block !important;
-}
-
-.pseudocode::-webkit-scrollbar-track,
-.coords-list::-webkit-scrollbar-track,
-.steps-feed::-webkit-scrollbar-track,
-.ds-body::-webkit-scrollbar-track,
-.panel-content::-webkit-scrollbar-track,
-.sidebar::-webkit-scrollbar-track,
 .main-area::-webkit-scrollbar-track {
     background: rgba(5, 8, 18, 0.9) !important;
     border-radius: 99px !important;
@@ -769,12 +751,47 @@ body {
 }
 
 @media (max-width: 900px) {
+    .pseudocode, .coords-list, .steps-feed, .ds-body, .panel-content {
+        overflow-y: scroll !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+
+    .pseudocode::-webkit-scrollbar,
+    .coords-list::-webkit-scrollbar,
+    .steps-feed::-webkit-scrollbar,
+    .ds-body::-webkit-scrollbar,
+    .panel-content::-webkit-scrollbar {
+        width: 7px !important;
+        height: 7px !important;
+        display: block !important;
+    }
+
+    .pseudocode::-webkit-scrollbar-track,
+    .coords-list::-webkit-scrollbar-track,
+    .steps-feed::-webkit-scrollbar-track,
+    .ds-body::-webkit-scrollbar-track,
+    .panel-content::-webkit-scrollbar-track {
+        background: rgba(5, 8, 18, 0.9) !important;
+        border-radius: 99px !important;
+    }
+
+    .pseudocode::-webkit-scrollbar-thumb,
+    .coords-list::-webkit-scrollbar-thumb,
+    .steps-feed::-webkit-scrollbar-thumb,
+    .ds-body::-webkit-scrollbar-thumb,
+    .panel-content::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, #00d4ff, #0088ff) !important;
+        border-radius: 99px !important;
+        box-shadow: 0 0 10px rgba(0, 212, 255, 0.8) !important;
+    }
+
     .topbar {
         padding: 0 10px;
         gap: 6px;
         overflow: visible;
         min-width: 750px;
     }
+
 
     .topbar-center {
         position: absolute; left: 50%; transform: translateX(-50%);
